@@ -11,10 +11,11 @@ public class LoginMenu {
         login.readFileData() ;
         int choice;
         do {
-            System.out.println("1. Đăng ký tài khoản");
-            System.out.println("2. Đăng nhập");
-
-            System.out.print("Chọn 1 hoặc 2 : ");
+            System.out.println("*** CHÀO MỪNG BẠN ĐẾN VỚI THẾ GIỚI BÓNG ****");
+            System.out.println("*         1. Đăng ký tài khoản             *");
+            System.out.println("*         2. Đăng nhập                     *");
+            System.out.println("*          Chọn 1 hoặc 2 nhé               *");
+            System.out.println("********************************************");
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:

@@ -1,6 +1,6 @@
 package Login;
 
-import IOFile.IOFile;
+
 import model.AccountUser;
 import model.Account;
 
@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Login {
     private final Scanner scanner = new Scanner(System.in);
 
-    public ArrayList<AccountUser> accountUsers = new ArrayList<>();
+    public static ArrayList<AccountUser> accountUsers = new ArrayList<>();
 
     public Login() {
     }
@@ -22,7 +22,7 @@ public class Login {
         String userAccount = scanner.next();
         System.out.println("2. Mời bạn vui lòng nhập mật khẩu mới: ");
         String userPassword = scanner.next();
-        System.out.println("3. Mời bạn nhập địa chỉ");
+        System.out.println("3. Mời bạn nhập địa chỉ của bạn đang ở:");
         String address = scanner.next();
         return new AccountUser(userAccount, userPassword,address);
     }
@@ -49,7 +49,7 @@ public class Login {
         }
     }
     public boolean checkAdmin(Account admin) {
-        if (admin.getName().equals("a") && admin.getPassword().equals("a")) {
+        if (admin.getName().equals("admin") && admin.getPassword().equals("admin")) {
             return true;
         } else
             return false;
@@ -63,7 +63,7 @@ public class Login {
         return false;
     }
     public void writerFileData(ArrayList<AccountUser> accountUsers) {
-        File file = new File("D:\\codegym\\Java\\CaseStudy-2\\User.txt");
+        File file = new File("User.txt");
         try {
             if (!file.exists()) {
                 file.createNewFile();
@@ -76,19 +76,13 @@ public class Login {
         }
     }
     public void readFileData() {
-        File file = new File("D:\\codegym\\Java\\CaseStudy-2\\User.txt");
+        File file = new File("User.txt");
         try {
             ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));
             accountUsers = (ArrayList<AccountUser>) objectInputStream.readObject();
             objectInputStream.close();
         } catch (Exception e) {
-            System.out.println("File đã tồn tại");
-        }
-    }
-    public void displayAccount() {
-        for (AccountUser a : accountUsers) {
-            System.out.println(a);
-
+            System.out.println(e.getMessage());
         }
     }
 }

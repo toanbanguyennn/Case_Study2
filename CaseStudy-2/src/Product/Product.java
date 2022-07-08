@@ -99,13 +99,18 @@ public class Product implements Serializable {
         this.soccerBall = soccerBall;
     }
 
-    @Override
-    public String toString() {
-        return
-                soccerBall +
-                        ", name=" + name +
-                        ", price=" + price +
-                        ", size=" + size;
-
+//    @Override
+//    public String toString() {
+//        return
+//                soccerBall +
+//                        ", name=" + name +
+//                        ", price=" + price +
+//                        ", size=" + size;
+//
+//    }
+    public void display(){
+        System.out.printf("%-15S%-15d", "mã sản phẩm: ", getId());
+        System.out.printf("%-15S%-15s","tên sản phẩm: ", getName());
+        System.out.printf("%-15S%-15d\n","giá sản phẩm: ", getPrice());
     }
 }

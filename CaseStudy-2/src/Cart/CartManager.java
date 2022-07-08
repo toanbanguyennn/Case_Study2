@@ -10,7 +10,7 @@ import static Product.ProductManager.arrayListProduct;
 
 public class CartManager {
     Scanner scanner = new Scanner(System.in);
-    public static ArrayList<Cart> arrayListCart = new ArrayList<>();
+    public static ArrayList<Cart> carts = new ArrayList<>();
 
     public CartManager() {
     }
@@ -35,10 +35,9 @@ public class CartManager {
     }
 
     public void addCart() {
-
         Cart cart = createCart();
-        arrayListCart.add(cart);
-        writeDocuments(arrayListCart);
+        carts.add(cart);
+        writeDocuments(carts);
     }
 
 
@@ -46,15 +45,15 @@ public class CartManager {
 
     public void displayCart() {
         int sum = 0;
-        for (Cart a : arrayListCart) {
-            sum += a.getTotalPrice();
+        for (Cart b : carts) {
+            sum += b.getTotalPrice();
         }
         System.out.printf("%5s%15s%24s%18s%20s%20s\n", "Mã Số", "Hãng", "Tên Sản Phẩm", "Giá", "Số Lượng", "Kích Cỡ");
-        for (int i = 0; i < arrayListCart.size(); i++) {
+        for (int i = 0; i < carts.size(); i++) {
             System.out.println();
-            System.out.printf("%-16s%-16s%-27s%s%-17s%-21s%s\n", arrayListCart.get(i).getProduct().getId(),
-                    arrayListCart.get(i).getProduct().getBrand().getName(), arrayListCart.get(i).getProduct().getName(), "$",
-                    arrayListCart.get(i).getProduct().getPrice(), arrayListCart.get(i).getCount(), arrayListCart.get(i).getProduct().getSize());
+            System.out.printf("%-16s%-16s%-27s%s%-17s%-21s%s\n", carts.get(i).getProduct().getId(),
+                    carts.get(i).getProduct().getBrand().getName(), carts.get(i).getProduct().getName(), "$",
+                    carts.get(i).getProduct().getPrice(), carts.get(i).getCount(), carts.get(i).getProduct().getSize());
 
             System.out.println();
         }
@@ -63,7 +62,7 @@ public class CartManager {
 
 
     public void writeDocuments(ArrayList<Cart> arrayListCart) {
-        File file = new File("D:\\txt\\Cart.txt");
+        File file = new File("cart.txt");
         try {
             if (!file.exists()) {
                 file.createNewFile();
@@ -77,10 +76,10 @@ public class CartManager {
     }
 
     public static void readDocuments() {
-        File file = new File("D:\\txt\\Cart.txt");
+        File file = new File("cart.txt");
         try {
             ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));
-            arrayListCart = (ArrayList<Cart>) objectInputStream.readObject();
+            carts = (ArrayList<Cart>) objectInputStream.readObject();
             objectInputStream.close();
         } catch (Exception e) {
             System.out.println(".");
@@ -91,9 +90,9 @@ public class CartManager {
         System.out.print("Nhập vào mã sản phẩm cần xóa đi homieee: ");
         int id;
         id = scanner.nextInt();
-        for (int i = 0; i < arrayListCart.size(); i++) {
-            if (id == arrayListCart.get(i).getId()) {
-                arrayListCart.remove(i);
+        for (int i = 0; i < carts.size(); i++) {
+            if (id == carts.get(i).getId()) {
+                carts.remove(i);
             }
         }
     }
