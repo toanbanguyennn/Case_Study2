@@ -36,9 +36,9 @@ public class ProductManager {
     public static void displayProduct() {
         System.out.printf( "%-10s%-16s%-20s%-20s%-20s%-20s\n", "Mã bóng", "Hãng bóng", "Chất Lượng Bóng", "Giá", "Số Lượng", "Size");
         for (int i = 0; i < arrayListProduct.size(); i++) {
-            System.out.println();
+
             System.out.printf("%-10s%-16s%-20s%-20s%-20s%-20s\n", arrayListProduct.get(i).getId(), arrayListProduct.get(i).getBrand().getName(), arrayListProduct.get(i).getName(), arrayListProduct.get(i).getPrice(), arrayListProduct.get(i).getAmount(), arrayListProduct.get(i).getSize());
-            System.out.println();
+
         }
     }
 
@@ -48,9 +48,8 @@ public class ProductManager {
         for (Product num : arrayListProduct) {
             if (num.getId() == id) {
                 System.out.printf("%-10s%-16s%-20s%-20s%-20s%-20s\n", "Mã Bóng", "Hãng Bóng", "Chất lượng bóng", "Giá", "Số Lượng", "Size");
-                System.out.println();
                 System.out.printf("%-10s%-16s%-20s%-20s%-20s%-20s\n",num.getId(), num.getBrand().getName(), num.getName(), num.getPrice(), num.getAmount(), num.getSize());
-                System.out.println();
+
             }
         }
     }

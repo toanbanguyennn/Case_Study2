@@ -52,14 +52,13 @@ public class CartManager {
         }
         System.out.printf("%-10s%-16s%-20s%-20s%-20s%-20s\n", "Mã Số", "Hãng", "Tên Sản Phẩm", "Giá", "Số Lượng", "Kích Cỡ");
         for (int i = 0; i < carts.size(); i++) {
-            System.out.println();
             System.out.printf("%-10s%-16s%-20s%-20s%-20s%-20s\n", carts.get(i).getProduct().getId(),
                     carts.get(i).getProduct().getBrand().getName(), carts.get(i).getProduct().getName(),
                     carts.get(i).getProduct().getPrice(), carts.get(i).getCount(), carts.get(i).getProduct().getSize());
 
-            System.out.println();
+
         }
-        System.out.printf("Số tiền hiện tại là: " , sum  + "\n");
+        System.out.printf("Số tiền hiện tại là: " + sum  + "\n");
     }
 
 

@@ -58,7 +58,7 @@ public class Login {
 
     }
     public boolean checkAdmin(Account admin) {
-        if (admin.getName().equals("admin") && admin.getPassword().equals("admin")) {
+        if (admin.getName().equals("admin") && admin.getPassword().equals("123456")) {
             return true;
         } else
             return false;
