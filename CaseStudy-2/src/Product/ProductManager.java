@@ -12,9 +12,9 @@ public class ProductManager {
         SoccerBall soccerBall = createBrand(scanner);
         System.out.println("Chất lượng bóng: ");
         String nameProduct = scanner.nextLine();
-        System.out.println("Giá sản phẩm: ");
+        System.out.println("Giá tiền: ");
         int price = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhập số lượng: ");
+        System.out.println("Nhập số lượng bóng: ");
         int amount = Integer.parseInt(scanner.nextLine());
         System.out.println("Nhập size: ");
         String size = scanner.nextLine();
@@ -34,28 +34,28 @@ public class ProductManager {
     }
 
     public static void displayProduct() {
-        System.out.printf( "%3s%16s%25s%19s%21s%21s\n", "ID", "Hãng bóng", "Chất Lượng Bóng", "Giá", "Số Lượng", "Size");
+        System.out.printf( "%-10s%-16s%-20s%-20s%-20s%-20s\n", "Mã bóng", "Hãng bóng", "Chất Lượng Bóng", "Giá", "Số Lượng", "Size");
         for (int i = 0; i < arrayListProduct.size(); i++) {
             System.out.println();
-            System.out.printf("%-10s%-24s%-25s%s%-18s%-23s%s\n", arrayListProduct.get(i).getId(), arrayListProduct.get(i).getBrand().getName(), arrayListProduct.get(i).getName(), "$", arrayListProduct.get(i).getPrice(), arrayListProduct.get(i).getAmount(), arrayListProduct.get(i).getSize());
+            System.out.printf("%-10s%-16s%-20s%-20s%-20s%-20s\n", arrayListProduct.get(i).getId(), arrayListProduct.get(i).getBrand().getName(), arrayListProduct.get(i).getName(), arrayListProduct.get(i).getPrice(), arrayListProduct.get(i).getAmount(), arrayListProduct.get(i).getSize());
             System.out.println();
         }
     }
 
     public void searchById(Scanner scanner) {
-        System.out.println("Nhập vào id sản phẩm cần tìm: ");
+        System.out.println("Nhập vào id bóng cần tìm: ");
         int id = Integer.parseInt(scanner.nextLine());
         for (Product num : arrayListProduct) {
             if (num.getId() == id) {
-                System.out.printf("%3s%16s%25s%19s%21s%21s\n", "ID", "Hãng Bóng", "Chất lượng bóng", "Giá", "Số Lượng", "Size");
+                System.out.printf("%-10s%-16s%-20s%-20s%-20s%-20s\n", "Mã Bóng", "Hãng Bóng", "Chất lượng bóng", "Giá", "Số Lượng", "Size");
                 System.out.println();
-                System.out.printf("%-10s%-24s%-28s%s%-18s%-23s%s\n",num.getId(), num.getBrand().getName(), num.getName(), num.getPrice(), num.getAmount(), num.getSize());
+                System.out.printf("%-10s%-16s%-20s%-20s%-20s%-20s\n",num.getId(), num.getBrand().getName(), num.getName(), num.getPrice(), num.getAmount(), num.getSize());
                 System.out.println();
             }
         }
     }
     public void deleteProduct(Scanner scanner) {
-        System.out.println("Nhập vào id sản phẩm cần xóa: ");
+        System.out.println("Nhập vào id bóng cần xóa: ");
         int id = Integer.parseInt(scanner.nextLine());
         for (Product pr : arrayListProduct) {
             if (pr.getId() == id) {
@@ -68,7 +68,7 @@ public class ProductManager {
     public void editBrandName(Scanner scanner, int id) {
         for (int i = 0; i < arrayListProduct.size(); i++) {
             if (arrayListProduct.get(i).getId() == (id)) {
-                System.out.println("Nhập tên hãng cần sửa: ");
+                System.out.println("Nhập tên hãng bóng cần sửa: ");
                 String name = scanner.nextLine();
                 arrayListProduct.get(i).getBrand().setName(name);
                 writeDocuments(arrayListProduct);
@@ -112,7 +112,7 @@ public class ProductManager {
     public void editProduceSize(Scanner scanner, int id) {
         for (int i = 0; i < arrayListProduct.size(); i++) {
             if (arrayListProduct.get(i).getId() == (id)) {
-                System.out.println("Nhập kích cỡ sản phẩm cần sửa: ");
+                System.out.println("Nhập kích cỡ bóng cần sửa: ");
                 String size = scanner.nextLine();
                 arrayListProduct.get(i).setSize(size);
                 writeDocuments(arrayListProduct);

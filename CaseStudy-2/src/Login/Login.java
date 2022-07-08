@@ -33,6 +33,8 @@ public class Login {
         writerFileData(accountUsers);
     }
     public void inputAccount(Scanner scanner) {
+        int check =0;
+        for (int i = 1; i <=3 ; i++) {
         System.out.println("Tài khoản: ");
         String name = scanner.next();
         System.out.println("Mật khẩu: ");
@@ -47,6 +49,13 @@ public class Login {
                 MenuUser.Menu();
             }
         }
+        System.out.println("Tài khoản mật khẩu không đúng !");
+        check ++;
+        }
+        if(check==3){
+            System.out.println("liên hệ Admin cấp tài khoản bạn ơi..");
+        }
+
     }
     public boolean checkAdmin(Account admin) {
         if (admin.getName().equals("admin") && admin.getPassword().equals("admin")) {

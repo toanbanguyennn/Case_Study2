@@ -16,7 +16,7 @@ public class MenuUser {
             System.out.println("*******************MENU**********************");
             System.out.println("*     1. Các sản phẩm của shop đang có      *");
             System.out.println("*     2. Mời các bạn chọn bóng              *");
-            System.out.println("*     3. Hiển thị giỏ hàng của bạn          *");
+            System.out.println("*     3. Giỏ hàng bạn đã mua sắm            *");
             System.out.println("*     4. Xóa sản phẩm bạn không muốn mua    *");
             System.out.println("*     5. Đăng xuất                          *");
             System.out.println("*********************************************");

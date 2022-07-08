@@ -16,11 +16,15 @@ public class CartManager {
     }
 
     public Cart createCart() {
-        System.out.println("Nhập mã sản phẩm muốn mua : ");
+        System.out.println("Nhập mã bóng muốn mua : ");
         int id = Integer.parseInt(scanner.nextLine());
         Product product = getProductByID(id);
-        System.out.println("Nhập số lượng cần mua");
-        int amount = Integer.parseInt(scanner.nextLine());
+        int amount;
+        do {
+            System.out.println("Nhập số lượng cần mua");
+            amount = Integer.parseInt(scanner.nextLine());
+        }
+        while(product.getAmount()<amount);
         int totalPrice = amount * product.getPrice();
         return new Cart(amount, product, totalPrice);
     }
@@ -41,23 +45,21 @@ public class CartManager {
     }
 
 
-
-
     public void displayCart() {
         int sum = 0;
         for (Cart b : carts) {
             sum += b.getTotalPrice();
         }
-        System.out.printf("%5s%15s%24s%18s%20s%20s\n", "Mã Số", "Hãng", "Tên Sản Phẩm", "Giá", "Số Lượng", "Kích Cỡ");
+        System.out.printf("%-10s%-16s%-20s%-20s%-20s%-20s\n", "Mã Số", "Hãng", "Tên Sản Phẩm", "Giá", "Số Lượng", "Kích Cỡ");
         for (int i = 0; i < carts.size(); i++) {
             System.out.println();
-            System.out.printf("%-16s%-16s%-27s%s%-17s%-21s%s\n", carts.get(i).getProduct().getId(),
-                    carts.get(i).getProduct().getBrand().getName(), carts.get(i).getProduct().getName(), "$",
+            System.out.printf("%-10s%-16s%-20s%-20s%-20s%-20s\n", carts.get(i).getProduct().getId(),
+                    carts.get(i).getProduct().getBrand().getName(), carts.get(i).getProduct().getName(),
                     carts.get(i).getProduct().getPrice(), carts.get(i).getCount(), carts.get(i).getProduct().getSize());
 
             System.out.println();
         }
-        System.out.printf("%s%s%s" , "Tổng tiền của quý khách là: " ,"$", sum  + "\n");
+        System.out.printf("Số tiền hiện tại là: " , sum  + "\n");
     }
 
 
